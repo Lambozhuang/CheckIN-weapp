@@ -6,7 +6,7 @@
   </view>
 
   <view class="input-container">
-    <input id="name" name="name" type="text" placeholder=""
+    <input id="name" name="name" type="text" placeholder="" value="{{name}}"
            bindblur="nameInput"/>
   </view>
 
@@ -15,7 +15,7 @@
   </view>
 
   <view class="input-container">
-    <input id="id" name="id" type="number" placeholder=""
+    <input id="id" name="id" type="number" placeholder="" value="{{id}}"
            bindblur="idInput"/>
   </view>
 
@@ -24,8 +24,9 @@
   </view>
 
   <view class="input-container">
-    <input id="school" name="school" type="text" placeholder=""
-           bindblur="schoolInput"/>
+    <picker bindchange="pickerChange" mode="selector" value="{{index}}" range="{{schoolList}}">
+      <text class="picker-text">{{school}}</text>
+    </picker>
   </view>
 
   <view class="input-button-container">

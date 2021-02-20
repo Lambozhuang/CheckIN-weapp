@@ -33,7 +33,6 @@ page {
   padding: 10rpx 10rpx 10rpx 10rpx;
   background-color: #ffffff;
   border-radius: 10rpx;
-
 }
 
 .input-area .input-button-container {
@@ -43,4 +42,9 @@ page {
 .input-area .input-button-container .input-button {
   background-color: #7ad8ff;
   color: #ffffff;
+}
+
+.input-area .input-button-container .input-button-active {
+  background-color: #3bc4ff;
+  color: #ffffff; 
 }

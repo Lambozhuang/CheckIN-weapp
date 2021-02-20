@@ -4,7 +4,7 @@ App({
     userInfo: {
       name: 'NULL',
       id: 'NULL',
-      school: 'NULL',
+      school: '---',
     }
   },
   onLaunch: function() {

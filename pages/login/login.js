@@ -6,9 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name: 'NULL',
-    id: 'NULL',
-    school: 'NULL',
+    name: '',
+    id: '',
+    school: '---',
+    schoolList: ['浙江工业大学', '浙江大学', '其他'],
+    index: 0,
   },
 
   /**
@@ -29,7 +31,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (app.globalData.loginFlag != 0) {
+      this.setData({
+        name: app.globalData.userInfo.name,
+        id: app.globalData.userInfo.id,
+        school: app.globalData.userInfo.school, 
+      })
+    }
+    
   },
 
   /**
@@ -72,28 +81,35 @@ Page({
     this.setData({
       name: e.detail.value
     })
-    app.globalData.userInfo.name = e.detail.value;
+
   },
   idInput: function(e) {
     this.setData({
       id: e.detail.value
     })
-    app.globalData.userInfo.id = e.detail.value;
+
   },
-  schoolInput: function(e) {
+
+  //选择器改变
+  pickerChange: function(e) {
     this.setData({
-      school: e.detail.value
+      index: e.detail.value,
+      school: this.data.schoolList[e.detail.value]
     })
-    app.globalData.userInfo.school = e.detail.value;
   },
 
   //按钮按下
   buttonTap: function() {
     if (this.data.name != 'NULL'
         && this.data.id != 'NULL'
-        && this.data.school != 'NULL') {
+        && this.data.schoolList[this.data.index] != '---') {
           app.globalData.loginFlag = 1;
           console.log(app.globalData.loginFlag);
+
+          app.globalData.userInfo.name = this.data.name;
+          app.globalData.userInfo.id = this.data.id;
+          app.globalData.userInfo.school = this.data.schoolList[this.data.index];
+
           wx.navigateBack();
         }
   }
