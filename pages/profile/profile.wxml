@@ -1,2 +1,23 @@
 <!-- pages/profile/profile.wxml -->
-<text>pages/profile/profile.wxml</text>
+<view class="profile-container">
+  <view class="profile-item">
+    <text>姓名：</text>
+    <text>{{userInfo.name}}</text>
+  </view>
+
+  <view class="profile-item">
+    <text>学号：</text>
+    <text>{{userInfo.id}}</text>
+  </view>
+
+  <view class="profile-item">
+    <text>学校：</text>
+    <text>{{userInfo.school}}</text>
+  </view>
+
+  <view class="profile-button-container">
+    <button class="profile-button" bindtap="buttonTap">
+      修改信息
+    </button>
+  </view>
+</view>

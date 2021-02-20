@@ -1,0 +1,21 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-top: 50rpx;
+  padding-left: 120rpx;
+  padding-right: 120rpx;
+
+}
+
+.profile-container .profile-item {
+  margin-bottom: 50rpx;
+  font-size: 40rpx;
+  color: #646464;
+
+}
+
+.profile-container .profile-button-container .profile-button {
+  color: #646464;
+}

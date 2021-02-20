@@ -1,11 +1,17 @@
 // pages/check/check.js
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {
+      name: 'NULL',
+      id: 'NULL',
+      school: 'NULL',
+    }
   },
 
   /**
@@ -26,7 +32,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      userInfo: {
+        name: app.globalData.userInfo.name,
+        id: app.globalData.userInfo.id,
+        school: app.globalData.userInfo.school,
+      }
+    })
   },
 
   /**
@@ -62,5 +74,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  //按钮按下
+  buttonTap: function() {
+    wx.navigateTo({
+      url: '../login/login'
+    })
   }
 })
