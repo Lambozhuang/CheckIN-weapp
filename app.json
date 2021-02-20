@@ -2,13 +2,14 @@
   "entryPagePath": "pages/index/index",
   "pages": [
     "pages/index/index",
-    "pages/profile/profile"
+    "pages/check/check",
+    "pages/profile/profile",
+    "pages/login/login"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "233",
-    "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light"
   },
   "tabBar": {
@@ -19,13 +20,19 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "主页",
-        "iconPath": "assets/home.png",
-        "selectedIconPath": "assets/home-active.png"
+        "text": "",
+        "iconPath": "assets/qrcode.png",
+        "selectedIconPath": "assets/qrcode-active.png"
+      },
+      {
+        "pagePath": "pages/check/check",
+        "text": "",
+        "iconPath": "assets/checklist.png",
+        "selectedIconPath": "assets/checklist-active.png"
       },
       {
         "pagePath": "pages/profile/profile",
-        "text": "个人信息",
+        "text": "",
         "iconPath": "assets/profile.png",
         "selectedIconPath": "assets/profile-active.png"
       }

@@ -1,0 +1,38 @@
+<!-- pages/login/login.wxml -->
+<view class="input-area">
+
+  <view class="input-title">
+    <text>姓名</text>
+  </view>
+
+  <view class="input-container">
+    <input id="name" name="name" type="text" placeholder=""
+           bindblur="nameInput"/>
+  </view>
+
+  <view class="input-title">
+    <text>学号</text>
+  </view>
+
+  <view class="input-container">
+    <input id="id" name="id" type="number" placeholder=""
+           bindblur="idInput"/>
+  </view>
+
+  <view class="input-title">
+    <text>学校</text>
+  </view>
+
+  <view class="input-container">
+    <input id="school" name="school" type="text" placeholder=""
+           bindblur="schoolInput"/>
+  </view>
+
+  <view class="input-button-container">
+    <button class="input-button" hover-class="input-button-active"
+            bindtap="buttonTap">
+      保存
+    </button>
+  </view>
+
+</view>

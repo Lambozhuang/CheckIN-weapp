@@ -1,11 +1,14 @@
-// pages/check/check.js
+// pages/login/login.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    name: 'NULL',
+    id: 'NULL',
+    school: 'NULL',
   },
 
   /**
@@ -62,5 +65,36 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  //获取输入
+  nameInput: function(e) {
+    this.setData({
+      name: e.detail.value
+    })
+    app.globalData.userInfo.name = e.detail.value;
+  },
+  idInput: function(e) {
+    this.setData({
+      id: e.detail.value
+    })
+    app.globalData.userInfo.id = e.detail.value;
+  },
+  schoolInput: function(e) {
+    this.setData({
+      school: e.detail.value
+    })
+    app.globalData.userInfo.school = e.detail.value;
+  },
+
+  //按钮按下
+  buttonTap: function() {
+    if (this.data.name != 'NULL'
+        && this.data.id != 'NULL'
+        && this.data.school != 'NULL') {
+          app.globalData.loginFlag = 1;
+          console.log(app.globalData.loginFlag);
+          wx.navigateBack();
+        }
   }
 })
