@@ -8,11 +8,17 @@ Page({
    */
   data: {
     checkedList: [
-      
+
     ],
 
     checkedNumber: 0,
 
+    scanContinue: false,
+    scanFail: false,
+
+    tempUserInfo: {
+
+    },
 
   },
 
@@ -34,7 +40,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const _this = this;
+    if (_this.data.scanContinue === true && _this.data.scanFail === false) {
+      //显示扫码信息并提示是否继续扫码
+      console.log("233");
+      wx.showModal({
+        title: '扫码成功',
+        content: _this.data.tempUserInfo.name + ' 已签到',
+        confirmText: '继续扫码',
+        cancelText: '返回列表',
+        success(res) {
+          if (res.confirm) {
+            _this.scanCode();
+          } else if (res.cancel) {
+            _this.setData({
+              scanContinue: false,
+            });
+          }
+        }
+      });
+    } else if (_this.data.scanFail === true) {
+      _this.setData({
+        scanFail: false
+      });
+    }
   },
 
   /**
@@ -72,22 +101,85 @@ Page({
 
   },
 
-  scanCode: function() {
+  scanCode: function () {
     const _this = this;
+    _this.setData({
+      scanFail: false,
+    });
     wx.scanCode({
       success(res) {
         const _tempUserInfo = commonUtil.decompressInfo(res.result);
-        const _checkedList = [..._this.data.checkedList, _tempUserInfo];
-        const _checkedNumber = _this.data.checkedNumber + 1
-        console.log(_tempUserInfo);
+        if (_tempUserInfo != 'FAIL' && _tempUserInfo.name != 'NULL') {
+          const _checkedList = [..._this.data.checkedList, _tempUserInfo];
+          const _checkedNumber = _this.data.checkedNumber + 1
+          console.log(_tempUserInfo);
+          _this.setData({
+            checkedList: _checkedList,
+            checkedNumber: _checkedNumber,
+            tempUserInfo: _tempUserInfo,
+            scanContinue: true,
+          });
+        } else {
+          wx.showToast({
+            title: '无效的签到码',
+            icon: 'error',
+            duration: 2000
+          });
+          _this.setData({
+            scanFail: true,
+          });
 
+        }
+
+      },
+
+      fail() {
         _this.setData({
-          checkedList: _checkedList,
-          checkedNumber: _checkedNumber
+          scanContinue: false,
         });
       }
     });
+
+
   },
+
+  //清空当前列表
+  deleteList: function () {
+    if (this.data.checkedNumber === 0) {
+      wx.showToast({
+        title: '列表为空',
+        icon: 'error',
+      });
+    } else {
+      const _this = this;
+      wx.showModal({
+        title: '警告',
+        content: '此操作不可撤回',
+        confirmText: '确认删除',
+        confirmColor: '#ff3838',
+        success(res) {
+          if (res.confirm) {
+            _this.setData({
+              checkedList: [],
+              checkedNumber: 0,
+            });
+          }
+
+        }
+      });
+    }
+
+  },
+
+  //导出列表
+  outputList: function () {
+    if (this.data.checkedNumber === 0) {
+      wx.showToast({
+        title: '列表为空',
+        icon: 'error',
+      });
+    }
+  }
 
 
 

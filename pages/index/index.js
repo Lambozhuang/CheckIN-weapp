@@ -47,9 +47,9 @@ Page({
 
     //判断登录状态
     if (app.globalData.loginFlag == 0) {
-      // wx.navigateTo({
-      //   url: '../login/login'
-      // })
+      wx.navigateTo({
+        url: '../login/login'
+      });
     }
 
     //显示当前时间

@@ -1,12 +1,26 @@
 <!-- pages/checkList/checkList.wxml -->
+
+
+<view class="checkedNumber">
+  已签到人数：{{checkedNumber}}
+</view>
+
 <view class="qrscan-container">
   <navigator class="qrscan" bindtap="scanCode">
     <text>进入扫码></text>
   </navigator>
 </view>
 
-<view class="checkedNumber">
-  已签到人数：{{checkedNumber}}
+<view class="delete-container">
+  <navigator class="delete-button" bindtap="deleteList">
+    <text>清空列表</text>
+  </navigator>
+</view>
+
+<view class="output-container">
+  <navigator class="output-button" bindtap="outputList">
+    <text>导出列表</text>
+  </navigator>
 </view>
 
 <view class="checkList">

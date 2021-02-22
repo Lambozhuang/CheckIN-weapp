@@ -2,6 +2,18 @@ page {
   background: #f3f3f3;
 }
 
+.checkedNumber {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 10rpx;
+  background: #ffffff;
+  color: #0099ff;
+}
+
 .qrscan-container {
   position: fixed;
   top: 0;
@@ -21,22 +33,49 @@ page {
   padding: 10rpx;
 }
 
-.checkedNumber {
+.delete-container {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 50%;
   display: flex;
   justify-content: center;
-  padding: 10rpx;
   background: #ffffff;
-  color: #0099ff;
+  color: #ff3838;
+}
+
+.delete-container .delete-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 10rpx;
+}
+
+.output-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+  color: #3ee646;
+}
+
+.output-container .output-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 10rpx;
 }
 
 .checkList {
   height: 100%;
   width: 100%;
   margin-top: 100rpx;
+  margin-button: 100rpx;
 }
 
 .checkList-container {
