@@ -22,6 +22,7 @@ Page({
       name: 'NULL',
       id: 'NULL',
       school: 'NULL',
+      time: '',
     }
   },
 
@@ -46,9 +47,9 @@ Page({
 
     //判断登录状态
     if (app.globalData.loginFlag == 0) {
-      wx.navigateTo({
-        url: '../login/login'
-      })
+      // wx.navigateTo({
+      //   url: '../login/login'
+      // })
     }
 
     //显示当前时间
@@ -64,7 +65,7 @@ Page({
       width: qrcode_w,
       height: qrcode_w,
       canvasId: 'myQrcode',
-      text: commonUtil.getCurrentInfo(app.globalData.userInfo, this.data.currentTime),
+      text: commonUtil.compressInfo(app.globalData.userInfo, this.data.currentTime),
       foreground: '#00a2ff'
     });
 

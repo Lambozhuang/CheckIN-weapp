@@ -1,0 +1,74 @@
+page {
+  background: #f3f3f3;
+}
+
+.qrscan-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  background: #7ad8ff;
+  color: #ffffff;
+}
+
+.qrscan-container .qrscan {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 10rpx;
+}
+
+.checkedNumber {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 10rpx;
+  background: #ffffff;
+  color: #0099ff;
+}
+
+.checkList {
+  height: 100%;
+  width: 100%;
+  margin-top: 100rpx;
+}
+
+.checkList-container {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  border-radius: 15rpx;
+}
+
+.checkList-container .checkList-sub-container-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #8d8d8d;
+}
+
+.checkList-container .checkList-sub-container-1 .checkList-name {
+  color: black;
+}
+
+.checkList-container .checkList-sub-container-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #8d8d8d;
+  font-size: 25rpx;
+}
+

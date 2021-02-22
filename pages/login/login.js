@@ -100,9 +100,9 @@ Page({
 
   //按钮按下
   buttonTap: function() {
-    if (this.data.name != 'NULL'
-        && this.data.id != 'NULL'
-        && this.data.schoolList[this.data.index] != '---') {
+    if (this.data.name != ''
+        && this.data.id != ''
+        && this.data.school != '---') {
           app.globalData.loginFlag = 1;
           console.log(app.globalData.loginFlag);
 

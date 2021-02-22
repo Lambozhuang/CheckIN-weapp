@@ -1,10 +1,18 @@
-// pages/profile/profile.js
+// pages/checkList/checkList.js
+import commonUtil from '../../utils/commonUtil'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    checkedList: [
+      
+    ],
+
+    checkedNumber: 0,
+
 
   },
 
@@ -62,5 +70,25 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  scanCode: function() {
+    const _this = this;
+    wx.scanCode({
+      success(res) {
+        const _tempUserInfo = commonUtil.decompressInfo(res.result);
+        const _checkedList = [..._this.data.checkedList, _tempUserInfo];
+        const _checkedNumber = _this.data.checkedNumber + 1
+        console.log(_tempUserInfo);
+
+        _this.setData({
+          checkedList: _checkedList,
+          checkedNumber: _checkedNumber
+        });
+      }
+    });
+  },
+
+
+
 })

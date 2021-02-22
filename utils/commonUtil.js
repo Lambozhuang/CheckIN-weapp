@@ -1,10 +1,21 @@
 //commonUtil.js
 
-var getCurrentInfo = function (userInfo, time) {
+var compressInfo = function (userInfo, time) {
   return userInfo.name + '//'
          + userInfo.id + '//'
          + userInfo.school + '//'
          + time;
 };
 
-module.exports = { getCurrentInfo };
+var decompressInfo = function (_userInfo) {
+  var str = _userInfo.split('//');
+  return {
+    name: str[0],
+    id: str[1],
+    school: str[2],
+    time: str[3]
+  }
+}
+
+module.exports.compressInfo = compressInfo;
+exports.decompressInfo = decompressInfo;

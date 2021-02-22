@@ -1,0 +1,43 @@
+<!-- pages/checkList/checkList.wxml -->
+<view class="qrscan-container">
+  <navigator class="qrscan" bindtap="scanCode">
+    <text>进入扫码></text>
+  </navigator>
+</view>
+
+<view class="checkedNumber">
+  已签到人数：{{checkedNumber}}
+</view>
+
+<view class="checkList">
+  <block wx:for="{{checkedList}}">
+    <view class="checkList-container">
+
+      <view class="checkList-sub-container-1">
+
+        <view class="checkList-name">
+          {{item.name}}
+        </view>
+
+        <view class="checkList-id">
+          {{item.id}}
+        </view>
+
+      </view>
+      
+
+      <view class="checkList-sub-container-2">
+
+        <view class="checkList-school">
+          {{item.school}}
+        </view>
+
+        <view class="checkList-time">
+          {{item.time}}
+        </view>
+
+      </view>
+
+    </view>
+  </block>
+</view>

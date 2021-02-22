@@ -2,7 +2,7 @@
   "entryPagePath": "pages/index/index",
   "pages": [
     "pages/index/index",
-    "pages/check/check",
+    "pages/checkList/checkList",
     "pages/profile/profile",
     "pages/login/login"
   ],
@@ -26,7 +26,7 @@
         "selectedIconPath": "assets/qrcode-active.png"
       },
       {
-        "pagePath": "pages/check/check",
+        "pagePath": "pages/checkList/checkList",
         "text": "",
         "iconPath": "assets/checklist.png",
         "selectedIconPath": "assets/checklist-active.png"
