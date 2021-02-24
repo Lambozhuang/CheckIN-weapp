@@ -35,10 +35,10 @@ Page({
       this.setData({
         name: app.globalData.userInfo.name,
         id: app.globalData.userInfo.id,
-        school: app.globalData.userInfo.school, 
+        school: app.globalData.userInfo.school,
       })
     }
-    
+
   },
 
   /**
@@ -77,13 +77,13 @@ Page({
   },
 
   //获取输入
-  nameInput: function(e) {
+  nameInput: function (e) {
     this.setData({
       name: e.detail.value
     })
 
   },
-  idInput: function(e) {
+  idInput: function (e) {
     this.setData({
       id: e.detail.value
     })
@@ -91,7 +91,7 @@ Page({
   },
 
   //选择器改变
-  pickerChange: function(e) {
+  pickerChange: function (e) {
     this.setData({
       index: e.detail.value,
       school: this.data.schoolList[e.detail.value]
@@ -99,21 +99,37 @@ Page({
   },
 
   //按钮按下
-  buttonTap: function() {
+  buttonTap: function () {
     if (this.data.name != ''
-        && this.data.id != ''
-        && this.data.school != '---') {
-          app.globalData.loginFlag = 1;
-          app.globalData.isTeacher = false;
-          app.globalData.userInfo.name = this.data.name;
-          app.globalData.userInfo.id = this.data.id;
-          app.globalData.userInfo.school = this.data.schoolList[this.data.index];
-          wx.navigateBack();
+      && this.data.id != ''
+      && this.data.school != '---') {
+      app.globalData.isTeacher = false;
+      app.globalData.userInfo.name = this.data.name;
+      app.globalData.userInfo.id = this.data.id;
+      app.globalData.userInfo.school = this.data.schoolList[this.data.index];
+      if (app.globalData.loginFlag === 0) {
+        wx.setStorage({
+          key: 'userData',
+          data: app.globalData.userInfo,
+          success() {
+            console.log('用户数据缓存成功');
+          },
+        });
+      }
+      app.globalData.loginFlag = 1;
+      wx.setStorage({
+        key: 'loginFlag',
+        data: 1,
+        success() {
+          console.log('用户已在本地登录')
         }
+      });
+      wx.navigateBack();
+    }
   },
 
   //老师入口
-  teacherLogin: function() {
+  teacherLogin: function () {
     app.globalData.loginFlag = 1;
     app.globalData.isTeacher = true;
     app.globalData.userInfo.name = '***';

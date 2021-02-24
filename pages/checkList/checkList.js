@@ -171,6 +171,9 @@ Page({
   //单个列表项目被点击
   checkListTap: function(e) {
     const _this = this;
+    wx.vibrateShort({
+      type: 'heavy'
+    });
     wx.showModal({
       title: '是否删除该记录？',
       success(res) {
