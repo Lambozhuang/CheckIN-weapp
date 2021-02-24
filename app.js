@@ -6,7 +6,7 @@ App({
       id: '',
       school: '---',
     },
-    isTeacher: false,
+    isTeacher: 0,
   },
   onLaunch: function() {
     const _this = this;
@@ -15,6 +15,13 @@ App({
       success(res) {
         _this.globalData.loginFlag = res.data;
         console.log('用户本地登录状态读取成功');
+      }
+    });
+    wx.getStorage({
+      key: 'teacherFlag',
+      success(res) {
+        _this.globalData.isTeacher = res.data;
+        console.log('老师身份信息读取成功');
       }
     });
     if (_this.globalData.loginFlag === 1) {

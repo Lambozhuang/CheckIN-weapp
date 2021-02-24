@@ -19,9 +19,9 @@ Page({
     currentTime: '',
     qrcode_w: qrcode_w,
     userInfo: {
-      name: 'NULL',
-      id: 'NULL',
-      school: 'NULL',
+      name: '',
+      id: '',
+      school: '',
       time: '',
     }
   },
@@ -30,7 +30,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-   
+    this.setData({
+      userInfo:{
+        name: app.globalData.userInfo.name,
+        id: app.globalData.userInfo.id,
+        school: app.globalData.userInfo.school,
+      }
+    });
   },
 
   /**

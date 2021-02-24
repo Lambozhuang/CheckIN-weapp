@@ -17,7 +17,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      name: app.globalData.userInfo.name,
+      id: app.globalData.userInfo.id,
+      school: app.globalData.userInfo.school,
+    });
   },
 
   /**
@@ -31,13 +35,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData.loginFlag != 0) {
-      this.setData({
-        name: app.globalData.userInfo.name,
-        id: app.globalData.userInfo.id,
-        school: app.globalData.userInfo.school,
-      })
-    }
 
   },
 
@@ -107,34 +104,60 @@ Page({
       app.globalData.userInfo.name = this.data.name;
       app.globalData.userInfo.id = this.data.id;
       app.globalData.userInfo.school = this.data.schoolList[this.data.index];
-      if (app.globalData.loginFlag === 0) {
-        wx.setStorage({
-          key: 'userData',
-          data: app.globalData.userInfo,
-          success() {
-            console.log('用户数据缓存成功');
-          },
-        });
-      }
+      wx.setStorage({
+        key: 'userData',
+        data: app.globalData.userInfo,
+        success() {
+          console.log('用户数据缓存成功');
+        },
+      });
       app.globalData.loginFlag = 1;
       wx.setStorage({
         key: 'loginFlag',
         data: 1,
         success() {
-          console.log('用户已在本地登录')
+          console.log('用户已在本地登录');
         }
       });
+      app.globalData.isTeacher = 0;
+      wx.setStorage({
+        key: 'teacherFlag',
+        data: 0,
+        success() {
+          console.log('老师身份删除成功');
+        }
+      })
       wx.navigateBack();
     }
   },
 
   //老师入口
   teacherLogin: function () {
-    app.globalData.loginFlag = 1;
-    app.globalData.isTeacher = true;
+    app.globalData.isTeacher = 1;
     app.globalData.userInfo.name = '***';
     app.globalData.userInfo.id = '************';
     app.globalData.userInfo.school = '********';
+    wx.setStorage({
+      key: 'userData',
+      data: app.globalData.userInfo,
+      success() {
+        console.log('老师用户数据缓存成功');
+      }
+    });
+    wx.setStorage({
+      key: 'teacherFlag',
+      data: 1,
+      success() {
+        console.log('老师身份记录成功');
+      }
+    });
+    wx.setStorage({
+      key: 'loginFlag',
+      data: 1,
+      success() {
+        console.log('老师用户已在本地登录');
+      }
+    });
     wx.navigateBack({
       success() {
         wx.switchTab({

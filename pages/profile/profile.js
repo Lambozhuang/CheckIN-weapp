@@ -8,9 +8,9 @@ Page({
    */
   data: {
     userInfo: {
-      name: 'NULL',
-      id: 'NULL',
-      school: 'NULL',
+      name: '',
+      id: '',
+      school: '',
     }
   },
 
@@ -78,7 +78,7 @@ Page({
 
   //按钮按下
   buttonTap: function() {
-    if (app.globalData.isTeacher === true) {
+    if (app.globalData.isTeacher === 1) {
       wx.showModal({
         title: '是否退出老师模式？',
         success(res) {
@@ -86,7 +86,7 @@ Page({
             app.globalData.userInfo.name = '';
             app.globalData.userInfo.id = '';
             app.globalData.userInfo.school = '---';
-            app.globalData.isTeacher = false;
+            app.globalData.isTeacher = 0;
             wx.navigateTo({
               url: '../login/login'
             });
