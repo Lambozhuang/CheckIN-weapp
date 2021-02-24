@@ -25,7 +25,7 @@
 
 <view class="checkList">
   <block wx:for="{{checkedList}}">
-    <view class="checkList-container">
+    <view class="checkList-container" bindlongpress="checkListTap" id="{{index}}">
 
       <view class="checkList-sub-container-1">
 

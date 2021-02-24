@@ -130,6 +130,9 @@ Page({
       success(res) {
         const _tempUserInfo = commonUtil.decompressInfo(res.result);
         const _compareFlag = commonUtil.compareInfo(_this.data.checkedList, _this.data.checkedNumber, _tempUserInfo);
+        _this.setData({
+          compareFlag: _compareFlag,
+        });
         if (_tempUserInfo != 'FAIL' && _tempUserInfo.name != 'NULL' && _compareFlag) {
           const _checkedList = [..._this.data.checkedList, _tempUserInfo];
           const _checkedNumber = _this.data.checkedNumber + 1;
@@ -140,9 +143,7 @@ Page({
             scanContinue: true,
           });
         } else if (_compareFlag === false) {
-          _this.setData({
-            compareFlag: _compareFlag,
-          });
+          
         } else {
           wx.showToast({
             title: '无效的签到码',
@@ -165,6 +166,37 @@ Page({
     });
 
 
+  },
+
+  //单个列表项目被点击
+  checkListTap: function(e) {
+    const _this = this;
+    wx.showModal({
+      title: '是否删除该记录？',
+      success(res) {
+        if (res.confirm) {
+          Array.prototype.remove = function (index) {
+            if (index > -1) {
+              this.splice(index, 1);
+            }
+          }
+
+          const _id = e.currentTarget.id;
+          const _checkedList = _this.data.checkedList;
+          const _checkedNumber = _this.data.checkedNumber - 1;
+          _checkedList.remove(_id);
+          _this.setData({
+            checkedNumber: _checkedNumber,
+            checkedList: _checkedList,
+          });
+
+        }
+      }
+    });
+
+    
+    
+    
   },
 
   //清空当前列表
