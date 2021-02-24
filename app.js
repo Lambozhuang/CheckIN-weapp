@@ -7,6 +7,8 @@ App({
       school: '---',
     },
     isTeacher: 0,
+    checkedList: [],
+    checkedNumber: 0,
   },
   onLaunch: function() {
     const _this = this;
@@ -30,6 +32,21 @@ App({
         success(res) {
           _this.globalData.userInfo = res.data;
           console.log('用户缓存数据读取成功');
+        }
+      });
+    }
+    wx.getStorage({
+      key: 'checkedNumber',
+      success(res) {
+        _this.globalData.checkedNumber = res.data;
+      }
+    });
+    console.log('1')
+    if (_this.globalData.checkedNumber != 0) {
+      wx.getStorage({
+        key: 'checkedList',
+        success(res) {
+          _this.globalData.checkedList = res.data;
         }
       });
     }

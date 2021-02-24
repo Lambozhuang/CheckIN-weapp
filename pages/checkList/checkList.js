@@ -1,5 +1,6 @@
 // pages/checkList/checkList.js
 import commonUtil from '../../utils/commonUtil'
+const app = getApp();
 
 Page({
 
@@ -35,7 +36,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log('2')
+    this.setData({
+      checkedList: app.globalData.checkedList,
+      checkedNumber: app.globalData.checkedNumber,
+    });
   },
 
   /**
@@ -61,6 +66,8 @@ Page({
             }
           }
         });
+
+
       } else {
         wx.showModal({
           title: '无法重复签到',
@@ -78,7 +85,7 @@ Page({
           }
         });
       }
-      
+
     } else if (_this.data.scanFail === true) {
       _this.setData({
         scanFail: false
@@ -142,8 +149,21 @@ Page({
             tempUserInfo: _tempUserInfo,
             scanContinue: true,
           });
+          app.globalData.checkedList = _checkedList;
+          wx.setStorage({
+            key: 'checkedList',
+            data: _checkedList,
+            success() {
+              console.log('签到列表缓存成功');
+            }
+          });
+          app.globalData.checkedNumber = _checkedNumber;
+          wx.setStorage({
+            key: 'checkedNumber',
+            data: _checkedNumber,
+          });
         } else if (_compareFlag === false) {
-          
+
         } else {
           wx.showToast({
             title: '无效的签到码',
@@ -169,7 +189,7 @@ Page({
   },
 
   //单个列表项目被点击
-  checkListTap: function(e) {
+  checkListTap: function (e) {
     const _this = this;
     wx.vibrateShort({
       type: 'heavy'
@@ -192,14 +212,24 @@ Page({
             checkedNumber: _checkedNumber,
             checkedList: _checkedList,
           });
+          app.globalData.checkedList = _checkedList;
+          wx.setStorage({
+            key: 'checkedList',
+            data: _checkedList,
+          });
+          app.globalData.checkedNumber = _checkedNumber;
+          wx.setStorage({
+            key: 'checkedNumber',
+            data: _checkedNumber,
+          });
 
         }
       }
     });
 
-    
-    
-    
+
+
+
   },
 
   //清空当前列表
@@ -221,6 +251,16 @@ Page({
             _this.setData({
               checkedList: [],
               checkedNumber: 0,
+            });
+            app.globalData.checkedList = [];
+            wx.setStorage({
+              key: 'checkedList',
+              data: [],
+            })
+            app.globalData.checkedNumber = 0;
+            wx.setStorage({
+              key: 'checkedNumber',
+              data: 0,
             });
           }
 
