@@ -2,10 +2,11 @@ App({
   globalData: {
     loginFlag: 0,
     userInfo: {
-      name: 'NULL',
-      id: 'NULL',
+      name: '',
+      id: '',
       school: '---',
-    }
+    },
+    isTeacher: false,
   },
   onLaunch: function() {
     

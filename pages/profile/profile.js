@@ -78,8 +78,27 @@ Page({
 
   //按钮按下
   buttonTap: function() {
-    wx.navigateTo({
-      url: '../login/login'
-    })
+    if (app.globalData.isTeacher === true) {
+      wx.showModal({
+        title: '是否退出老师模式？',
+        success(res) {
+          if (res.confirm) {
+            app.globalData.userInfo.name = '';
+            app.globalData.userInfo.id = '';
+            app.globalData.userInfo.school = '---';
+            app.globalData.isTeacher = false;
+            wx.navigateTo({
+              url: '../login/login'
+            });
+          }
+          
+        }
+      });
+    } else {
+      wx.navigateTo({
+        url: '../login/login'
+      });
+    }
+    
   }
 })

@@ -104,13 +104,29 @@ Page({
         && this.data.id != ''
         && this.data.school != '---') {
           app.globalData.loginFlag = 1;
-          console.log(app.globalData.loginFlag);
-
+          app.globalData.isTeacher = false;
           app.globalData.userInfo.name = this.data.name;
           app.globalData.userInfo.id = this.data.id;
           app.globalData.userInfo.school = this.data.schoolList[this.data.index];
-
           wx.navigateBack();
         }
+  },
+
+  //老师入口
+  teacherLogin: function() {
+    app.globalData.loginFlag = 1;
+    app.globalData.isTeacher = true;
+    app.globalData.userInfo.name = '***';
+    app.globalData.userInfo.id = '************';
+    app.globalData.userInfo.school = '********';
+    wx.navigateBack({
+      success() {
+        wx.switchTab({
+          url: '../checkList/checkList'
+        });
+      }
+    });
   }
+
+
 })

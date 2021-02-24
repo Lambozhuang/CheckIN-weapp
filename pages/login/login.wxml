@@ -36,4 +36,10 @@
     </button>
   </view>
 
+  <view class="text-container">
+    <navigator bindtap="teacherLogin">
+      <text>我是老师</text>
+    </navigator>
+  </view>
+
 </view>

@@ -20,6 +20,8 @@ Page({
 
     },
 
+    compareFlag: true,
+
   },
 
   /**
@@ -43,22 +45,40 @@ Page({
     const _this = this;
     if (_this.data.scanContinue === true && _this.data.scanFail === false) {
       //显示扫码信息并提示是否继续扫码
-      console.log("233");
-      wx.showModal({
-        title: '扫码成功',
-        content: _this.data.tempUserInfo.name + ' 已签到',
-        confirmText: '继续扫码',
-        cancelText: '返回列表',
-        success(res) {
-          if (res.confirm) {
-            _this.scanCode();
-          } else if (res.cancel) {
-            _this.setData({
-              scanContinue: false,
-            });
+      if (_this.data.compareFlag) {
+        wx.showModal({
+          title: '扫码成功',
+          content: _this.data.tempUserInfo.name + ' 已签到',
+          confirmText: '继续扫码',
+          cancelText: '返回列表',
+          success(res) {
+            if (res.confirm) {
+              _this.scanCode();
+            } else if (res.cancel) {
+              _this.setData({
+                scanContinue: false,
+              });
+            }
           }
-        }
-      });
+        });
+      } else {
+        wx.showModal({
+          title: '无法重复签到',
+          content: _this.data.tempUserInfo.name + ' 已签到',
+          confirmText: '继续扫码',
+          cancelText: '返回列表',
+          success(res) {
+            if (res.confirm) {
+              _this.scanCode();
+            } else if (res.cancel) {
+              _this.setData({
+                scanContinue: false,
+              });
+            }
+          }
+        });
+      }
+      
     } else if (_this.data.scanFail === true) {
       _this.setData({
         scanFail: false
@@ -109,15 +129,19 @@ Page({
     wx.scanCode({
       success(res) {
         const _tempUserInfo = commonUtil.decompressInfo(res.result);
-        if (_tempUserInfo != 'FAIL' && _tempUserInfo.name != 'NULL') {
+        const _compareFlag = commonUtil.compareInfo(_this.data.checkedList, _this.data.checkedNumber, _tempUserInfo);
+        if (_tempUserInfo != 'FAIL' && _tempUserInfo.name != 'NULL' && _compareFlag) {
           const _checkedList = [..._this.data.checkedList, _tempUserInfo];
-          const _checkedNumber = _this.data.checkedNumber + 1
-          console.log(_tempUserInfo);
+          const _checkedNumber = _this.data.checkedNumber + 1;
           _this.setData({
             checkedList: _checkedList,
             checkedNumber: _checkedNumber,
             tempUserInfo: _tempUserInfo,
             scanContinue: true,
+          });
+        } else if (_compareFlag === false) {
+          _this.setData({
+            compareFlag: _compareFlag,
           });
         } else {
           wx.showToast({
