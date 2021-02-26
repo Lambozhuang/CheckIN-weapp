@@ -52,50 +52,7 @@ Page({
         url: '../login/login'
       });
     }
-    const _this = this;
-    if (_this.data.scanContinue === true && _this.data.scanFail === false) {
-      //显示扫码信息并提示是否继续扫码
-      if (_this.data.compareFlag) {
-        wx.showModal({
-          title: '扫码成功',
-          content: _this.data.tempUserInfo.name + ' 已签到',
-          confirmText: '继续扫码',
-          cancelText: '返回列表',
-          success(res) {
-            if (res.confirm) {
-              _this.scanCode();
-            } else if (res.cancel) {
-              _this.setData({
-                scanContinue: false,
-              });
-            }
-          }
-        });
 
-
-      } else {
-        wx.showModal({
-          title: '无法重复签到',
-          content: _this.data.tempUserInfo.name + ' 已签到',
-          confirmText: '继续扫码',
-          cancelText: '返回列表',
-          success(res) {
-            if (res.confirm) {
-              _this.scanCode();
-            } else if (res.cancel) {
-              _this.setData({
-                scanContinue: false,
-              });
-            }
-          }
-        });
-      }
-
-    } else if (_this.data.scanFail === true) {
-      _this.setData({
-        scanFail: false
-      });
-    }
   },
 
   /**
@@ -142,17 +99,12 @@ Page({
       success(res) {
         const _tempUserInfo = commonUtil.decompressInfo(res.result);
         const _compareFlag = commonUtil.compareInfo(_this.data.checkedList, _this.data.checkedNumber, _tempUserInfo);
-        _this.setData({
-          compareFlag: _compareFlag,
-        });
         if (_tempUserInfo != 'FAIL' && _tempUserInfo.name != 'NULL' && _compareFlag) {
           const _checkedList = [..._this.data.checkedList, _tempUserInfo];
           const _checkedNumber = _this.data.checkedNumber + 1;
           _this.setData({
             checkedList: _checkedList,
             checkedNumber: _checkedNumber,
-            tempUserInfo: _tempUserInfo,
-            scanContinue: true,
           });
           app.globalData.checkedList = _checkedList;
           wx.setStorage({
@@ -167,16 +119,14 @@ Page({
             key: 'checkedNumber',
             data: _checkedNumber,
           });
+          _this.afterScanCode(_tempUserInfo, _compareFlag);
         } else if (_compareFlag === false) {
-
+          _this.afterScanCode(_tempUserInfo, _compareFlag);
         } else {
           wx.showToast({
             title: '无效的签到码',
             icon: 'error',
             duration: 2000
-          });
-          _this.setData({
-            scanFail: true,
           });
 
         }
@@ -190,6 +140,37 @@ Page({
       }
     });
 
+
+  },
+
+  //判断是否继续扫码
+  afterScanCode: function (_tempUserInfo, _compareFlag) {
+    const _this = this;
+    if (_compareFlag) {
+      wx.showModal({
+        title: '扫码成功',
+        content: _tempUserInfo.name + ' 已签到',
+        confirmText: '继续扫码',
+        cancelText: '返回列表',
+        success(res) {
+          if (res.confirm) {
+            _this.scanCode();
+          }
+        }
+      });
+    } else {
+      wx.showModal({
+        title: '无法重复签到',
+        content: _tempUserInfo.name + ' 已签到',
+        confirmText: '继续扫码',
+        cancelText: '返回列表',
+        success(res) {
+          if (res.confirm) {
+            _this.scanCode();
+          }
+        }
+      });
+    }
 
   },
 

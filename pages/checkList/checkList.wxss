@@ -75,7 +75,6 @@ page {
   height: 100%;
   width: 100%;
   margin-top: 100rpx;
-  margin-button: 100rpx;
 }
 
 .checkList-container {
@@ -111,3 +110,6 @@ page {
   font-size: 25rpx;
 }
 
+.blank {
+  height: 100rpx;
+}

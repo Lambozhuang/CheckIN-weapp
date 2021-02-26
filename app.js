@@ -7,7 +7,9 @@ App({
       school: '---',
     },
     isTeacher: 0,
-    checkedList: [],
+    checkedList: [
+      
+    ],
     checkedNumber: 0,
   },
   onLaunch: function() {
