@@ -7,7 +7,7 @@
 
   <view class="input-container">
     <input id="name" name="name" type="text" placeholder="" value="{{name}}" maxlength="20"
-           bindblur="nameInput"/>
+           bindinput="nameInput"/>
   </view>
 
   <view class="input-title">
@@ -16,7 +16,7 @@
 
   <view class="input-container">
     <input id="id" name="id" type="number" placeholder="" value="{{id}}" maxlength="16"
-           bindblur="idInput"/>
+           bindinput="idInput"/>
   </view>
 
   <view class="input-title">
