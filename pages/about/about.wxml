@@ -2,7 +2,8 @@
 <view class="info-container">
   <image class="logo" src="../../assets/logo.png"></image>
   <view class="text-container">
-    <text class="version">{{version}}</text>
-    <text>ZJUT · Developed by LamboTZ</text>
+    <text class="text">{{version}}</text>
+    <text class="text">ZJUT · Developed by LamboTZ</text>
+    <text class="text-3">Copyright © 2021 All Rights Reserved</text>
   </view>
 </view>

@@ -26,6 +26,12 @@ page {
   font-weight: 200;
 }
 
-.info-container .text-container .version {
+.info-container .text-container .text {
+  margin-bottom: 5rpx;
+}
+
+.info-container .text-container .text-3 {
+  margin-top: 25rpx;
   margin-bottom: 10rpx;
+  font-size: 26rpx;
 }
