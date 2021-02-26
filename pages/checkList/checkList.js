@@ -36,10 +36,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-      checkedList: app.globalData.checkedList,
-      checkedNumber: app.globalData.checkedNumber,
-    });
+    
   },
 
   /**
@@ -52,6 +49,10 @@ Page({
         url: '../login/login'
       });
     }
+    this.setData({
+      checkedList: app.globalData.checkedList,
+      checkedNumber: app.globalData.checkedNumber,
+    });
 
   },
 
@@ -59,7 +60,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**

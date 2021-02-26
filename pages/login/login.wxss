@@ -15,10 +15,14 @@ page {
   flex-direction: column;
   justify-content: center;
   justify-content: space-evenly;
-  padding-top: 100rpx;
-  padding-left: 150rpx;
-  padding-right: 150rpx;
-
+  padding-top: 60rpx;
+  padding-left: 110rpx;
+  padding-right: 110rpx;
+  padding-bottom: 60rpx;
+  margin-top: 60rpx;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  background: #ffffff;
 }
 
 .input-area .input-title {
@@ -31,8 +35,9 @@ page {
 .input-area .input-container {
   margin-bottom: 40rpx;
   padding: 10rpx 20rpx 10rpx 20rpx;
-  background-color: #ffffff;
+  background-color: #f3f3f3;
   border-radius: 10rpx;
+  font-weight: 300;
 }
 
 .input-area .input-button-container {
@@ -52,7 +57,8 @@ page {
 .text-container {
   display: flex;
   justify-content: center;
-  font-size: 28rpx;
+  font-size: 30rpx;
   margin-top: 30rpx;
   color: #53c9ff;
+  font-weight: 320;
 }
