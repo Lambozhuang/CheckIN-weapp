@@ -41,7 +41,6 @@ App({
         _this.globalData.checkedNumber = res.data;
       }
     });
-    console.log('1')
     if (_this.globalData.checkedNumber != 0) {
       wx.getStorage({
         key: 'checkedList',
@@ -50,5 +49,6 @@ App({
         }
       });
     }
+    
   }
 })

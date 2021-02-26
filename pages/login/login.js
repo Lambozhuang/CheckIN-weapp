@@ -133,7 +133,6 @@ Page({
 
   //老师入口
   teacherLogin: function () {
-    app.globalData.isTeacher = 1;
     app.globalData.userInfo.name = '***';
     app.globalData.userInfo.id = '************';
     app.globalData.userInfo.school = '********';
@@ -144,6 +143,7 @@ Page({
         console.log('老师用户数据缓存成功');
       }
     });
+    app.globalData.isTeacher = 1;
     wx.setStorage({
       key: 'teacherFlag',
       data: 1,
@@ -151,6 +151,7 @@ Page({
         console.log('老师身份记录成功');
       }
     });
+    app.globalData.loginFlag = 1;
     wx.setStorage({
       key: 'loginFlag',
       data: 1,

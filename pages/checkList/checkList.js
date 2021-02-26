@@ -36,7 +36,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log('2')
     this.setData({
       checkedList: app.globalData.checkedList,
       checkedNumber: app.globalData.checkedNumber,
@@ -47,6 +46,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //判断登录状态
+    if (app.globalData.loginFlag === 0) {
+      wx.navigateTo({
+        url: '../login/login'
+      });
+    }
     const _this = this;
     if (_this.data.scanContinue === true && _this.data.scanFail === false) {
       //显示扫码信息并提示是否继续扫码
@@ -275,6 +280,11 @@ Page({
     if (this.data.checkedNumber === 0) {
       wx.showToast({
         title: '列表为空',
+        icon: 'error',
+      });
+    } else {
+      wx.showToast({
+        title: '功能暂未上线',
         icon: 'error',
       });
     }

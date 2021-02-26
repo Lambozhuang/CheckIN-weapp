@@ -38,7 +38,13 @@ Page({
         id: app.globalData.userInfo.id,
         school: app.globalData.userInfo.school,
       }
-    })
+    });
+    //判断登录状态
+    if (app.globalData.loginFlag === 0) {
+      wx.navigateTo({
+        url: '../login/login'
+      });
+    }
   },
 
   /**

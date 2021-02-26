@@ -43,7 +43,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
@@ -52,9 +52,15 @@ Page({
   onShow: function () {
 
     //判断登录状态
-    if (app.globalData.loginFlag == 0) {
+    if (app.globalData.loginFlag === 0) {
       wx.navigateTo({
         url: '../login/login'
+      });
+    }
+
+    if (app.globalData.isTeacher === 1) {
+      wx.switchTab({
+        url: '../checkList/checkList'
       });
     }
 
