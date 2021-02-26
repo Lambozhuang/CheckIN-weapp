@@ -4,20 +4,23 @@
     <text>姓名：</text>
     <text>{{userInfo.name}}</text>
   </view>
-
   <view class="profile-item">
     <text>学号：</text>
     <text>{{userInfo.id}}</text>
   </view>
-
   <view class="profile-item">
     <text>学校：</text>
     <text>{{userInfo.school}}</text>
   </view>
-
-  <view class="profile-button-container">
-    <button class="profile-button" bindtap="buttonTap">
-      修改信息
-    </button>
+  <view wx:if="{{isTeacher}}" class="teacher-sign-container">
+    <text>当前为老师模式</text>
   </view>
 </view>
+<navigator class="profile-navigator" bindtap="buttonTap">
+  <text>修改信息</text>
+  <image class="icon" src="../../assets/arrow-right-grey.png" />
+</navigator>
+<navigator class="profile-navigator" url="../about/about">
+  <text>关于</text>
+  <image class="icon" src="../../assets/arrow-right-grey.png" />
+</navigator>

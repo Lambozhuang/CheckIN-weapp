@@ -1,0 +1,8 @@
+<!-- pages/about/about.wxml -->
+<view class="info-container">
+  <image class="logo" src="../../assets/logo.png"></image>
+  <view class="text-container">
+    <text class="version">{{version}}</text>
+    <text>ZJUT · Developed by LamboTZ</text>
+  </view>
+</view>

@@ -28,9 +28,15 @@ page {
 .qrscan-container .qrscan {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   padding: 10rpx;
+}
+
+.qrscan-container .qrscan .icon {
+  height: 30rpx;
+  width: 30rpx;
 }
 
 .delete-container {

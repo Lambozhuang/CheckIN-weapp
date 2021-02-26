@@ -30,8 +30,7 @@
   </view>
 
   <view class="input-button-container">
-    <button class="input-button" hover-class="input-button-active"
-            bindtap="buttonTap">
+    <button class="input-button" hover-class="input-button-active" bindtap="buttonTap">
       保存
     </button>
   </view>

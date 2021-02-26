@@ -1,0 +1,31 @@
+page {
+  background: #f3f3f3;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 20rpx 40rpx 20rpx;
+  margin-top: 60rpx;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  background: #ffffff;
+}
+
+.info-container .logo {
+  width: 500rpx;
+  height: 500rpx;
+}
+
+.info-container .text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+  font-weight: 200;
+}
+
+.info-container .text-container .version {
+  margin-bottom: 10rpx;
+}

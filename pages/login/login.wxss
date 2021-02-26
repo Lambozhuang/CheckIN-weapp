@@ -25,12 +25,12 @@ page {
   padding-left: 10rpx;
   margin-bottom: 10rpx;
   color: #494949;
-
+  font-weight: 300;
 }
 
 .input-area .input-container {
   margin-bottom: 40rpx;
-  padding: 10rpx 10rpx 10rpx 10rpx;
+  padding: 10rpx 20rpx 10rpx 20rpx;
   background-color: #ffffff;
   border-radius: 10rpx;
 }
@@ -52,7 +52,7 @@ page {
 .text-container {
   display: flex;
   justify-content: center;
-  font-size: 25rpx;
+  font-size: 28rpx;
   margin-top: 30rpx;
   color: #53c9ff;
 }

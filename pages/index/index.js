@@ -58,16 +58,10 @@ Page({
       });
     }
 
-    if (app.globalData.isTeacher === 1) {
-      wx.switchTab({
-        url: '../checkList/checkList'
-      });
-    }
-
     //显示当前时间
-    var that = this;
+    var _this = this;
     var interval = setInterval(function () {
-      that.setData({
+      _this.setData({
         currentTime: timeUtil.formatTime(new Date())
       });
     }, 1000);
@@ -81,6 +75,17 @@ Page({
       foreground: '#00a2ff'
     });
 
+    var interval2 = setInterval(function() {
+      var _currentTime = timeUtil.formatTime(new Date());
+      drawQrcode({
+        width: qrcode_w,
+        height: qrcode_w,
+        canvasId: 'myQrcode',
+        text: commonUtil.compressInfo(app.globalData.userInfo, _currentTime),
+        foreground: '#00a2ff'
+      });
+    }, 60000);
+
     this.setData({
       userInfo: {
         name: app.globalData.userInfo.name,
@@ -88,6 +93,12 @@ Page({
         school: app.globalData.userInfo.school,
       }
     })
+
+    if (app.globalData.isTeacher === 1) {
+      wx.switchTab({
+        url: '../checkList/checkList'
+      });
+    }
 
   },
 

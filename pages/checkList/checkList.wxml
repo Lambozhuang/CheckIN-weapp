@@ -7,7 +7,7 @@
 
 <view class="qrscan-container">
   <navigator class="qrscan" bindtap="scanCode">
-    <text>进入扫码></text>
+    <text>进入扫码</text><image class="icon" src="../../assets/arrow-right-white.png" />
   </navigator>
 </view>
 

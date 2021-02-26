@@ -1,27 +1,26 @@
-<!--pages/index/index.wxml-->
-
-<view class="time">
-  <text class="timeText">{{currentTime}}</text>
-</view>
-
-<view class="qrcode">
-  <canvas style="width:{{qrcode_w}}px; height:{{qrcode_w}}px;"
-          canvas-id="myQrcode"></canvas>
-</view>
-
-<view class="userInfo-container">
-  <view class="userInfo-item">
-    <text>姓名：</text>
-    <text>{{userInfo.name}}</text>
+<!-- pages/index/index.wxml -->
+<view class="info-container">
+  <view class="time">
+    <text class="timeText">{{currentTime}}</text>
   </view>
-
-  <view class="userInfo-item">
-    <text>学号：</text>
-    <text>{{userInfo.id}}</text>
+  <view class="qrcode">
+    <canvas style="width:{{qrcode_w}}px; height:{{qrcode_w}}px;" canvas-id="myQrcode"></canvas>
   </view>
-
-  <view class="userInfo-item">
-    <text>学校：</text>
-    <text>{{userInfo.school}}</text>
+  <view class="userInfo-container">
+    <view class="userInfo-item">
+      <text>姓名：</text>
+      <text>{{userInfo.name}}</text>
+    </view>
+    <view class="userInfo-item">
+      <text>学号：</text>
+      <text>{{userInfo.id}}</text>
+    </view>
+    <view class="userInfo-item">
+      <text>学校：</text>
+      <text>{{userInfo.school}}</text>
+    </view>
+    <view class="notice-text">
+      <text>请在签到时出示此码</text>
+    </view>
   </view>
 </view>

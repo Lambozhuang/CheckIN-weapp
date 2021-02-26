@@ -1,34 +1,54 @@
 /* pages/index/index.wxss */
+page {
+   background: #f3f3f3;
+}
 
-.time {
+.info-container {
+  margin-top: 60rpx;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  margin-bottom: 60rpx;
+  padding-top: 60rpx;
+  padding-bottom: 30rpx;
+  background: #ffffff;
+}
+
+.info-container .time {
   display: flex;
   justify-content: center;
-  margin-top: 100rpx;
   margin-bottom: 50rpx;
 }
 
-.timeText {
+.info-container .timeText {
   font-size: 38rpx;
   font-family: '微软雅黑';
 
 }
 
-.qrcode {
+.info-container .qrcode {
   display: flex;
   justify-content: center;
 }
 
-.userInfo-container {
+.info-container .userInfo-container {
   padding-top: 50rpx;
-  padding-left: 150rpx;
-  padding-right: 150rpx;
+  padding-left: 88rpx;
+  padding-right: 88rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
   justify-content: space-evenly;
 }
 
-.userInfo-item {
+.info-container .userInfo-item {
   margin-bottom: 30rpx;
   color: #b1b1b1;
+}
+
+.info-container .notice-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  margin-top: 30rpx;
 }

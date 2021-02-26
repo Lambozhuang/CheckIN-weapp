@@ -1,21 +1,50 @@
+page {
+  background: #f3f3f3;
+}
+
 .profile-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   justify-content: space-evenly;
   padding-top: 50rpx;
-  padding-left: 120rpx;
-  padding-right: 120rpx;
-
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+  background: #ffffff;
+  
 }
 
 .profile-container .profile-item {
   margin-bottom: 50rpx;
   font-size: 40rpx;
-  color: #646464;
+  font-weight: 300;
+}
+
+.profile-container .teacher-sign-container {
+  color: #ff2b2b;
+  display: flex;
+  justify-content: center;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
 
 }
 
-.profile-container .profile-button-container .profile-button {
-  color: #646464;
+.profile-navigator {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  padding-left: 60rpx;
+  padding-right: 20rpx;
+  height: 90rpx;
+  background-color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 300;
+}
+
+.profile-navigator .icon {
+  height: 36rpx;
+  width: 36rpx;
 }
