@@ -31,6 +31,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    const _this = this;
     wx.getStorage({
       key: 'loginFlag',
       success(res) {
@@ -44,7 +45,7 @@ Page({
               console.log('用户缓存数据读取成功');
             }
           });
-          this.setData({
+          _this.setData({
             userInfo: {
               name: app.globalData.userInfo.name,
               id: app.globalData.userInfo.id,
