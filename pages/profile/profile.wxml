@@ -12,8 +12,11 @@
     <text>学校：</text>
     <text>{{userInfo.school}}</text>
   </view>
-  <view wx:if="{{isTeacher}}" class="teacher-sign-container">
+  <view wx:if="{{teacherFlag}}" class="alert-text">
     <text>当前为老师模式</text>
+  </view>
+  <view wx:if="{{!loginFlag}}" class="alert-text">
+    <text>未填写个人信息</text>
   </view>
 </view>
 <navigator class="profile-navigator" bindtap="buttonTap">

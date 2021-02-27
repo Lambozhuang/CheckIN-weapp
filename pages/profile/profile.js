@@ -13,21 +13,15 @@ Page({
       school: '',
     }
   },
-  isTeacher: false,
+  loginFlag: 0,
+  teacherFlag: 0,
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.isTeacher === 1) {
-      this.setData({
-        isTeacher: true,
-      });
-    } else if (app.globalData.isTeacher === 0) {
-      this.setData({
-        isTeacher: false,
-      })
-    }
+
   },
 
   /**
@@ -48,22 +42,9 @@ Page({
         id: app.globalData.userInfo.id,
         school: app.globalData.userInfo.school,
       },
+      loginFlag: app.globalData.loginFlag,
+      teacherFlag: app.globalData.teacherFlag,
     });
-    if (app.globalData.isTeacher === 1) {
-      _this.setData({
-        isTeacher: true,
-      });
-    } else if (app.globalData.isTeacher === 0) {
-      _this.setData({
-        isTeacher: false,
-      });
-    }
-    //判断登录状态
-    if (app.globalData.loginFlag === 0) {
-      wx.navigateTo({
-        url: '../login/login'
-      });
-    }
   },
 
   /**
@@ -102,26 +83,40 @@ Page({
   },
 
   //按钮按下
-  buttonTap: function() {
+  buttonTap: function () {
     const _this = this;
-    if (app.globalData.isTeacher === 1) {
+    if (app.globalData.teacherFlag === 1) {
       wx.showModal({
         title: '是否退出老师模式？',
         success(res) {
           if (res.confirm) {
+
+            //清空个人信息
             app.globalData.userInfo.name = '';
             app.globalData.userInfo.id = '';
             app.globalData.userInfo.school = '---';
-            app.globalData.isTeacher = 0;
+            app.globalData.teacherFlag = 0;
             app.globalData.loginFlag = 0;
             _this.setData({
-              isTeacher: false,
+              loginFlag: 0,
+              teacherFlag: 0,
+            });
+
+            //清空缓存
+            wx.removeStorage({
+              key: 'loginFlag',
+            });
+            wx.removeStorage({
+              key: 'teacherFlag',
+            });
+            wx.removeStorage({
+              key: 'userData'
             });
             wx.navigateTo({
               url: '../login/login'
             });
           }
-          
+
         }
       });
     } else {
@@ -129,6 +124,6 @@ Page({
         url: '../login/login'
       });
     }
-    
+
   }
 })

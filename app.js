@@ -6,7 +6,7 @@ App({
       id: '',
       school: '---',
     },
-    isTeacher: 0,
+    teacherFlag: 0,
     checkedList: [
 
     ],
@@ -15,15 +15,8 @@ App({
   },
   onLaunch: function () {
     const _this = this;
-    
-    wx.getStorage({
-      key: 'teacherFlag',
-      success(res) {
-        _this.globalData.isTeacher = res.data;
-        console.log('老师身份信息读取成功');
-      }
-    });
 
+    //读取列表缓存
     wx.getStorage({
       key: 'checkedNumber',
       success(res) {

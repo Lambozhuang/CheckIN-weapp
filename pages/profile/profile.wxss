@@ -20,7 +20,7 @@ page {
   font-weight: 300;
 }
 
-.profile-container .teacher-sign-container {
+.profile-container .alert-text {
   color: #ff2b2b;
   display: flex;
   justify-content: center;

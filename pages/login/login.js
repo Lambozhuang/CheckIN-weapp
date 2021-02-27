@@ -100,7 +100,7 @@ Page({
     if (this.data.name != ''
       && this.data.id != ''
       && this.data.school != '---') {
-      app.globalData.isTeacher = false;
+      app.globalData.teacherFlag = 0;
       app.globalData.userInfo.name = this.data.name;
       app.globalData.userInfo.id = this.data.id;
       app.globalData.userInfo.school = this.data.schoolList[this.data.index];
@@ -119,7 +119,7 @@ Page({
           console.log('用户已在本地登录');
         }
       });
-      app.globalData.isTeacher = 0;
+      app.globalData.teacherFlag = 0;
       wx.setStorage({
         key: 'teacherFlag',
         data: 0,
@@ -133,17 +133,16 @@ Page({
 
   //老师入口
   teacherLogin: function () {
-    app.globalData.userInfo.name = '***';
-    app.globalData.userInfo.id = '************';
-    app.globalData.userInfo.school = '********';
-    wx.setStorage({
+    app.globalData.userInfo.name = '';
+    app.globalData.userInfo.id = '';
+    app.globalData.userInfo.school = '---';
+    wx.removeStorage({
       key: 'userData',
-      data: app.globalData.userInfo,
       success() {
-        console.log('老师用户数据缓存成功');
+        console.log('数据缓存删除成功');
       }
     });
-    app.globalData.isTeacher = 1;
+    app.globalData.teacherFlag = 1;
     wx.setStorage({
       key: 'teacherFlag',
       data: 1,

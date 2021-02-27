@@ -43,12 +43,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //判断登录状态
-    if (app.globalData.loginFlag === 0) {
-      wx.navigateTo({
-        url: '../login/login'
-      });
-    }
     this.setData({
       checkedList: app.globalData.checkedList,
       checkedNumber: app.globalData.checkedNumber,

@@ -25,6 +25,7 @@ Page({
       time: '',
     },
     loginFlag: 0,
+    teacherFlag: 0,
   },
 
   /**
@@ -38,22 +39,55 @@ Page({
         app.globalData.loginFlag = res.data;
         console.log('用户本地登录状态读取成功');
         if (app.globalData.loginFlag === 1) {
+
+          wx.getStorage({
+            key: 'teacherFlag',
+            success(res) {
+              app.globalData.teacherFlag = res.data;
+              _this.setData.teacherFlag = res.data;
+              console.log('老师身份信息读取成功');
+            }
+          });
+
+          //获取缓存数据
           wx.getStorage({
             key: 'userData',
             success(res) {
               app.globalData.userInfo = res.data;
               console.log('用户缓存数据读取成功');
+
+              //保持数据同步
+              _this.setData({
+                userInfo: {
+                  name: app.globalData.userInfo.name,
+                  id: app.globalData.userInfo.id,
+                  school: app.globalData.userInfo.school,
+                },
+                loginFlag: app.globalData.loginFlag,
+                teacherFlag: app.globalData.teacherFlag,
+              });
+
+              //首次绘制二维码
+              const _currentTime = timeUtil.formatTime(new Date());
+              drawQrcode({
+                width: qrcode_w,
+                height: qrcode_w,
+                canvasId: 'myQrcode',
+                text: commonUtil.compressInfo(app.globalData.userInfo, _currentTime),
+                foreground: '#00a2ff'
+              });
             }
           });
-          _this.setData({
-            userInfo: {
-              name: app.globalData.userInfo.name,
-              id: app.globalData.userInfo.id,
-              school: app.globalData.userInfo.school,
-            },
-            loginFlag: app.globalData.loginFlag,
+        } else {
+          wx.navigateTo({
+            url: '../login/login'
           });
         }
+      },
+      fail() {
+        wx.navigateTo({
+          url: '../login/login'
+        });
       }
     });
 
@@ -72,51 +106,51 @@ Page({
   onShow: function () {
 
     //显示当前时间
-    var _this = this;
+    const _this = this;
     var interval = setInterval(function () {
       _this.setData({
-        currentTime: timeUtil.formatTime(new Date())
+        currentTime: timeUtil.formatTime(new Date()),
+        loginFlag: app.globalData.loginFlag,
+        teacherFlag: app.globalData.teacherFlag,
       });
     }, 1000);
 
-    //显示二维码
-    drawQrcode({
-      width: qrcode_w,
-      height: qrcode_w,
-      canvasId: 'myQrcode',
-      text: commonUtil.compressInfo(app.globalData.userInfo, this.data.currentTime),
-      foreground: '#00a2ff'
-    });
-
-    var interval2 = setInterval(function () {
-      var _currentTime = timeUtil.formatTime(new Date());
-      drawQrcode({
-        width: qrcode_w,
-        height: qrcode_w,
-        canvasId: 'myQrcode',
-        text: commonUtil.compressInfo(app.globalData.userInfo, _currentTime),
-        foreground: '#00a2ff'
-      });
-    }, 60000);
-
+    //保持数据同步
     this.setData({
       userInfo: {
         name: app.globalData.userInfo.name,
         id: app.globalData.userInfo.id,
         school: app.globalData.userInfo.school,
       },
-      loginFlag: app.globalData.loginFlag,
-    })
+    });
 
-    if (app.globalData.isTeacher === 1) {
-      wx.switchTab({
-        url: '../checkList/checkList'
-      });
-    } else if (app.globalData.loginFlag === 0) {
-      wx.navigateTo({
-        url: '../login/login'
+    //绘制空二维码
+    if (_this.data.loginFlag === 0 || _this.data.teacherFlag === 1) {
+      drawQrcode({
+        width: qrcode_w,
+        height: qrcode_w,
+        canvasId: 'myQrcode',
+        text: 'NULL',
+        foreground: '#f3f3f3'
       });
     }
+
+    //循环绘制二维码，如果是老师或者未登录，则停止循环
+    var interval2 = setInterval(function () {
+      if (_this.data.teacherFlag === 1 || _this.data.loginFlag === 0) {
+        clearInterval(interval2);
+      } else {
+        var _currentTime = timeUtil.formatTime(new Date());
+        drawQrcode({
+          width: qrcode_w,
+          height: qrcode_w,
+          canvasId: 'myQrcode',
+          text: commonUtil.compressInfo(app.globalData.userInfo, _currentTime),
+          foreground: '#00a2ff'
+        });
+      }
+
+    }, 10000);
 
   },
 

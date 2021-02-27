@@ -1,14 +1,14 @@
 //commonUtil.js
 const app = getApp();
 var compressInfo = function (userInfo, time) {
-  if (app.globalData.isTeacher === 0) {
+  if (app.globalData.teacherFlag === 0) {
     return 'CheckIN_QRcode' + '//'
       + userInfo.name + '//'
       + userInfo.id + '//'
       + userInfo.school + '//'
       + time;
   } else {
-    return 'Teacher'
+    return 'NULL'
   }
 
 };

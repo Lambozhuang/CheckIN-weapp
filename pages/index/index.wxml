@@ -19,11 +19,14 @@
       <text>学校：</text>
       <text>{{userInfo.school}}</text>
     </view>
-    <view wx:if="{{loginFlag}}" class="notice-text">
+    <view wx:if="{{loginFlag && !teacherFlag}}" class="notice-text">
       <text>请在签到时出示此码</text>
     </view>
     <view wx:if="{{!loginFlag}}" class="alert-text">
       <text>未填写个人信息</text>
+    </view>
+    <view wx:if="{{teacherFlag}}" class="alert-text">
+      <text>当前为老师模式</text>
     </view>
   </view>
 </view>
