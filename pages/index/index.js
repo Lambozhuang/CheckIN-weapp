@@ -23,40 +23,52 @@ Page({
       id: '',
       school: '',
       time: '',
-    }
+    },
+    loginFlag: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    this.setData({
-      userInfo:{
-        name: app.globalData.userInfo.name,
-        id: app.globalData.userInfo.id,
-        school: app.globalData.userInfo.school,
+    wx.getStorage({
+      key: 'loginFlag',
+      success(res) {
+        app.globalData.loginFlag = res.data;
+        console.log('用户本地登录状态读取成功');
+        if (app.globalData.loginFlag === 1) {
+          wx.getStorage({
+            key: 'userData',
+            success(res) {
+              app.globalData.userInfo = res.data;
+              console.log('用户缓存数据读取成功');
+            }
+          });
+          this.setData({
+            userInfo: {
+              name: app.globalData.userInfo.name,
+              id: app.globalData.userInfo.id,
+              school: app.globalData.userInfo.school,
+            },
+            loginFlag: app.globalData.loginFlag,
+          });
+        }
       }
     });
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-    //判断登录状态
-    if (app.globalData.loginFlag === 0) {
-      wx.navigateTo({
-        url: '../login/login'
-      });
-    }
 
     //显示当前时间
     var _this = this;
@@ -75,7 +87,7 @@ Page({
       foreground: '#00a2ff'
     });
 
-    var interval2 = setInterval(function() {
+    var interval2 = setInterval(function () {
       var _currentTime = timeUtil.formatTime(new Date());
       drawQrcode({
         width: qrcode_w,
@@ -91,12 +103,17 @@ Page({
         name: app.globalData.userInfo.name,
         id: app.globalData.userInfo.id,
         school: app.globalData.userInfo.school,
-      }
+      },
+      loginFlag: app.globalData.loginFlag,
     })
 
     if (app.globalData.isTeacher === 1) {
       wx.switchTab({
         url: '../checkList/checkList'
+      });
+    } else if (app.globalData.loginFlag === 0) {
+      wx.navigateTo({
+        url: '../login/login'
       });
     }
 

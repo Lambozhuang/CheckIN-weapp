@@ -52,3 +52,12 @@ page {
   font-weight: 300;
   margin-top: 30rpx;
 }
+
+.info-container .alert-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  margin-top: 30rpx;
+  color: #ff0000;
+}
