@@ -224,7 +224,7 @@ page {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: #e2e2e2;
+    color: #8a8a8a;
   }
 
   .checkList-container .checkList-sub-container-1 .checkList-name {
@@ -235,7 +235,7 @@ page {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: #e2e2e2;
+    color: #8a8a8a;
     font-size: 25rpx;
   }
 

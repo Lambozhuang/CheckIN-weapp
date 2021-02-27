@@ -29,6 +29,7 @@ Page({
 
     theme: "light",
     qrcodeFgColor: "#00a2ff",
+    qrcodeFgColor_grey: "#ededed",
     qrcodeBgColor: "#fefefe",
   },
 
@@ -42,11 +43,13 @@ Page({
         if (res.theme === "light") {
           _this.setData({
             qrcodeFgColor: "#00a2ff",
+            qrcodeFgColor_grey: "#ededed",
             qrcodeBgColor: "#fefefe",
           });
         } else {
           _this.setData({
             qrcodeFgColor: "#7ad8ff",
+            qrcodeFgColor_grey: "#535353",
             qrcodeBgColor: "#191919",
           });
         }
@@ -129,12 +132,35 @@ Page({
       if (res.theme === "light") {
         _this.setData({
           qrcodeFgColor: "#00a2ff",
+          qrcodeFgColor_grey: "#ededed",
           qrcodeBgColor: "#fefefe",
         });
       } else {
         _this.setData({
           qrcodeFgColor: "#7ad8ff",
+          qrcodeFgColor_grey: "#535353",
           qrcodeBgColor: "#191919",
+        });
+      }
+      if (_this.data.loginFlag === 0 || _this.data.teacherFlag === 1) {
+        drawQrcode({
+          width: qrcode_w,
+          height: qrcode_w,
+          canvasId: 'myQrcode',
+          text: 'NULL',
+          foreground: _this.data.qrcodeFgColor_grey,
+          background: _this.data.qrcodeBgColor,
+        });
+      } else {
+        //onShow首次绘制二维码
+        const _currentTime = timeUtil.formatTime(new Date());
+        drawQrcode({
+          width: qrcode_w,
+          height: qrcode_w,
+          canvasId: 'myQrcode',
+          text: commonUtil.compressInfo(app.globalData.userInfo, _currentTime),
+          foreground: _this.data.qrcodeFgColor,
+          background: _this.data.qrcodeBgColor,
         });
       }
     })
@@ -163,7 +189,7 @@ Page({
         height: qrcode_w,
         canvasId: 'myQrcode',
         text: 'NULL',
-        foreground: '#ededed',
+        foreground: _this.data.qrcodeFgColor_grey,
         background: _this.data.qrcodeBgColor,
       });
     } else {
