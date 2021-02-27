@@ -8,37 +8,39 @@
     "pages/about/about"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "233",
-    "backgroundColor": "#f3f3f3",
-    "backgroundTextStyle": "light"
+    "navigationBarBackgroundColor": "@navBgColor",
+    "navigationBarTextStyle": "@navTxtStyle",
+    "navigationBarTitleText": "CheckIN",
+    "backgroundColor": "@bgColor",
+    "backgroundTextStyle": "@bgTxtStyle"
   },
   "tabBar": {
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "@tabBgColor",
     "color": "#000000",
     "selectedColor": "#7ad8ff",
-    "borderStyle": "white",
+    "borderStyle": "@tabBorderStyle",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "",
-        "iconPath": "assets/qrcode.png",
-        "selectedIconPath": "assets/qrcode-active.png"
+        "iconPath": "@tabIconPath1",
+        "selectedIconPath": "@tabSelectedIconPath1"
       },
       {
         "pagePath": "pages/checkList/checkList",
         "text": "",
-        "iconPath": "assets/checklist.png",
-        "selectedIconPath": "assets/checklist-active.png"
+        "iconPath": "@tabIconPath2",
+        "selectedIconPath": "@tabSelectedIconPath2"
       },
       {
         "pagePath": "pages/profile/profile",
         "text": "",
-        "iconPath": "assets/profile.png",
-        "selectedIconPath": "assets/profile-active.png"
+        "iconPath": "@tabIconPath3",
+        "selectedIconPath": "@tabSelectedIconPath3"
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "darkmode": true,
+  "themeLocation":"theme.json"
 }

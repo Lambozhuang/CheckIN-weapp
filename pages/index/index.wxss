@@ -1,6 +1,6 @@
 /* pages/index/index.wxss */
 page {
-   background: #f3f3f3;
+  background: #ededed;
 }
 
 .info-container {
@@ -10,7 +10,7 @@ page {
   margin-bottom: 60rpx;
   padding-top: 60rpx;
   padding-bottom: 30rpx;
-  background: #ffffff;
+  background: #fefefe;
 }
 
 .info-container .time {
@@ -21,8 +21,7 @@ page {
 
 .info-container .timeText {
   font-size: 38rpx;
-  font-family: '微软雅黑';
-
+  font-family: "微软雅黑";
 }
 
 .info-container .qrcode {
@@ -60,4 +59,68 @@ page {
   font-weight: 300;
   margin-top: 30rpx;
   color: #ff0000;
+}
+
+@media (prefers-color-scheme: dark) {
+  page {
+    background: #111111;
+  }
+
+  .info-container {
+    margin-top: 60rpx;
+    margin-left: 60rpx;
+    margin-right: 60rpx;
+    margin-bottom: 60rpx;
+    padding-top: 60rpx;
+    padding-bottom: 30rpx;
+    background: #191919;
+  }
+
+  .info-container .time {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50rpx;
+  }
+
+  .info-container .timeText {
+    font-size: 38rpx;
+    font-family: "微软雅黑";
+  }
+
+  .info-container .qrcode {
+    display: flex;
+    justify-content: center;
+  }
+
+  .info-container .userInfo-container {
+    padding-top: 50rpx;
+    padding-left: 88rpx;
+    padding-right: 88rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+  }
+
+  .info-container .userInfo-item {
+    margin-bottom: 30rpx;
+    color: #f0f0f0;
+  }
+
+  .info-container .notice-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    margin-top: 30rpx;
+  }
+
+  .info-container .alert-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    margin-top: 30rpx;
+    color: #ff0000;
+  }
 }

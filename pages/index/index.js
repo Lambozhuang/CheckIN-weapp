@@ -26,6 +26,10 @@ Page({
     },
     loginFlag: 0,
     teacherFlag: 0,
+
+    theme: "light",
+    qrcodeFgColor: "#00a2ff",
+    qrcodeBgColor: "#fefefe",
   },
 
   /**
@@ -33,6 +37,21 @@ Page({
    */
   onLoad: function () {
     const _this = this;
+    wx.getSystemInfo({
+      success(res) {
+        if (res.theme === "light") {
+          _this.setData({
+            qrcodeFgColor: "#00a2ff",
+            qrcodeBgColor: "#fefefe",
+          });
+        } else {
+          _this.setData({
+            qrcodeFgColor: "#7ad8ff",
+            qrcodeBgColor: "#191919",
+          });
+        }
+      }
+    });
     wx.getStorage({
       key: 'loginFlag',
       success(res) {
@@ -74,7 +93,8 @@ Page({
                 height: qrcode_w,
                 canvasId: 'myQrcode',
                 text: commonUtil.compressInfo(app.globalData.userInfo, _currentTime),
-                foreground: '#00a2ff'
+                foreground: _this.data.qrcodeFgColor,
+                background: _this.data.qrcodeBgColor,
               });
             }
           });
@@ -104,9 +124,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-    //显示当前时间
     const _this = this;
+    wx.onThemeChange((res) => {
+      if (res.theme === "light") {
+        _this.setData({
+          qrcodeFgColor: "#00a2ff",
+          qrcodeBgColor: "#fefefe",
+        });
+      } else {
+        _this.setData({
+          qrcodeFgColor: "#7ad8ff",
+          qrcodeBgColor: "#191919",
+        });
+      }
+    })
+    //显示当前时间
     var interval = setInterval(function () {
       _this.setData({
         currentTime: timeUtil.formatTime(new Date()),
@@ -131,7 +163,8 @@ Page({
         height: qrcode_w,
         canvasId: 'myQrcode',
         text: 'NULL',
-        foreground: '#f3f3f3'
+        foreground: '#ededed',
+        background: _this.data.qrcodeBgColor,
       });
     } else {
       //onShow首次绘制二维码
@@ -141,7 +174,8 @@ Page({
         height: qrcode_w,
         canvasId: 'myQrcode',
         text: commonUtil.compressInfo(app.globalData.userInfo, _currentTime),
-        foreground: '#00a2ff'
+        foreground: _this.data.qrcodeFgColor,
+        background: _this.data.qrcodeBgColor,
       });
     }
 
@@ -156,7 +190,8 @@ Page({
           height: qrcode_w,
           canvasId: 'myQrcode',
           text: commonUtil.compressInfo(app.globalData.userInfo, _currentTime),
-          foreground: '#00a2ff'
+          foreground: _this.data.qrcodeFgColor,
+          background: _this.data.qrcodeBgColor,
         });
       }
 

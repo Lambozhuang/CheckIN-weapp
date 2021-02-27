@@ -1,5 +1,5 @@
 page {
-  background: #f3f3f3;
+  background: #ededed;
 }
 
 .profile-container {
@@ -10,8 +10,7 @@ page {
   padding-top: 50rpx;
   padding-left: 60rpx;
   padding-right: 60rpx;
-  background: #ffffff;
-  
+  background: #fefefe;
 }
 
 .profile-container .profile-item {
@@ -26,7 +25,6 @@ page {
   justify-content: center;
   font-size: 28rpx;
   margin-bottom: 20rpx;
-
 }
 
 .profile-navigator {
@@ -39,7 +37,7 @@ page {
   padding-left: 60rpx;
   padding-right: 20rpx;
   height: 90rpx;
-  background-color: #ffffff;
+  background-color: #fefefe;
   font-size: 32rpx;
   font-weight: 300;
 }
@@ -47,4 +45,55 @@ page {
 .profile-navigator .icon {
   height: 36rpx;
   width: 36rpx;
+}
+
+@media (prefers-color-scheme: dark) {
+  page {
+    background: #111111;
+  }
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+    padding-top: 50rpx;
+    padding-left: 60rpx;
+    padding-right: 60rpx;
+    background: #191919;
+  }
+
+  .profile-container .profile-item {
+    margin-bottom: 50rpx;
+    font-size: 40rpx;
+    font-weight: 300;
+  }
+
+  .profile-container .alert-text {
+    color: #ff2b2b;
+    display: flex;
+    justify-content: center;
+    font-size: 28rpx;
+    margin-bottom: 20rpx;
+  }
+
+  .profile-navigator {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    padding-left: 60rpx;
+    padding-right: 20rpx;
+    height: 90rpx;
+    background-color: #191919;
+    font-size: 32rpx;
+    font-weight: 300;
+  }
+
+  .profile-navigator .icon {
+    height: 36rpx;
+    width: 36rpx;
+  }
 }

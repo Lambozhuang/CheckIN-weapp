@@ -7,7 +7,9 @@
 
 <view class="qrscan-container">
   <navigator class="qrscan" bindtap="scanCode">
-    <text>进入扫码</text><image class="icon" src="../../assets/arrow-right-white.png" />
+    <text>进入扫码</text>
+    <image wx:if="{{theme === 'light'}}" class="icon" src="../../assets/arrow-right-white.png" />
+    <image wx:if="{{theme === 'dark'}}" class="icon" src="../../assets/arrow-right-dark.png" />
   </navigator>
 </view>
 

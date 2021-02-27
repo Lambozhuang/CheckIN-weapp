@@ -21,9 +21,9 @@
 </view>
 <navigator class="profile-navigator" bindtap="buttonTap">
   <text>修改信息</text>
-  <image class="icon" src="../../assets/arrow-right-grey.png" />
+  <image class="icon" src="../../assets/arrow-right-dark.png" />
 </navigator>
 <navigator class="profile-navigator" url="../about/about">
   <text>关于</text>
-  <image class="icon" src="../../assets/arrow-right-grey.png" />
+  <image class="icon" src="../../assets/arrow-right-dark.png" />
 </navigator>

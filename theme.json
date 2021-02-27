@@ -1,0 +1,32 @@
+{
+  "light": {
+    "navBgColor": "#f5f5f5",
+    "navTxtStyle": "black",
+    "bgColor": "#ededed",
+    "bgTxtStyle": "light",
+    "tabBgColor": "#f5f5f5",
+    "tabColor": "#000000",
+    "tabIconPath1": "assets/qrcode-light.png",
+    "tabSelectedIconPath1": "assets/qrcode-active.png",
+    "tabIconPath2": "assets/checklist-light.png",
+    "tabSelectedIconPath2": "assets/checklist-active.png",
+    "tabIconPath3": "assets/profile-light.png",
+    "tabSelectedIconPath3": "assets/profile-active.png",
+    "tabBorderStyle": "white"
+  },
+  "dark": {
+    "navBgColor": "#1b1b1b",
+    "navTxtStyle": "white",
+    "bgColor": "#111111",
+    "bgTxtStyle": "dark",
+    "tabBgColor": "#1b1b1b",
+    "tabColor": "#fefefe",
+    "tabIconPath1": "assets/qrcode-dark.png",
+    "tabSelectedIconPath1": "assets/qrcode-active.png",
+    "tabIconPath2": "assets/checklist-dark.png",
+    "tabSelectedIconPath2": "assets/checklist-active.png",
+    "tabIconPath3": "assets/profile-dark.png",
+    "tabSelectedIconPath3": "assets/profile-active.png",
+    "tabBorderStyle": "black"
+  }
+}

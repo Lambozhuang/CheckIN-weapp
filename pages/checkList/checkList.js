@@ -23,13 +23,22 @@ Page({
 
     compareFlag: true,
 
+    theme: "light",
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const _this = this;
+    wx.getSystemInfo({
+      success(res) {
+        _this.setData({
+          theme: res.theme,
+        });
+      }
+    });
   },
 
   /**
@@ -43,11 +52,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
+    const _this = this;
+    _this.setData({
       checkedList: app.globalData.checkedList,
       checkedNumber: app.globalData.checkedNumber,
     });
-
+    wx.onThemeChange((res) => {
+      _this.setData({
+        theme: res.theme,
+      });
+    });
   },
 
   /**
