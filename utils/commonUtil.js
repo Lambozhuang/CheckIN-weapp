@@ -1,12 +1,15 @@
 //commonUtil.js
+import base64 from 'base64.js'
+
 const app = getApp();
 var compressInfo = function (userInfo, time) {
   if (app.globalData.teacherFlag === 0) {
-    return 'CheckIN_QRcode' + '//'
-      + userInfo.name + '//'
-      + userInfo.id + '//'
-      + userInfo.school + '//'
-      + time;
+    const head = 'CheckIN_QRcode';
+    return base64.encode(head) + '_'
+      + base64.encode(userInfo.name) + '_'
+      + base64.encode(userInfo.id) + '_'
+      + base64.encode(userInfo.school) + '_'
+      + base64.encode(time);
   } else {
     return 'NULL'
   }
@@ -14,13 +17,14 @@ var compressInfo = function (userInfo, time) {
 };
 
 var decompressInfo = function (_userInfo) {
-  var str = _userInfo.split('//');
-  if (str[0] === 'CheckIN_QRcode') {
+  var strArray = _userInfo.split('_');
+  
+  if (base64.decode(strArray[0]) === 'CheckIN_QRcode') {
     return {
-      name: str[1],
-      id: str[2],
-      school: str[3],
-      time: str[4]
+      name: base64.decode(strArray[1]),
+      id: base64.decode(strArray[2]),
+      school: base64.decode(strArray[3]),
+      time: base64.decode(strArray[4])
     }
   } else {
     return 'FAIL'

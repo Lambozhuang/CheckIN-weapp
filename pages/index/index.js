@@ -133,6 +133,16 @@ Page({
         text: 'NULL',
         foreground: '#f3f3f3'
       });
+    } else {
+      //onShow首次绘制二维码
+      const _currentTime = timeUtil.formatTime(new Date());
+      drawQrcode({
+        width: qrcode_w,
+        height: qrcode_w,
+        canvasId: 'myQrcode',
+        text: commonUtil.compressInfo(app.globalData.userInfo, _currentTime),
+        foreground: '#00a2ff'
+      });
     }
 
     //循环绘制二维码，如果是老师或者未登录，则停止循环
@@ -150,7 +160,7 @@ Page({
         });
       }
 
-    }, 10000);
+    }, 60000);
 
   },
 
