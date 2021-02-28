@@ -13,21 +13,15 @@ Page({
     index: 0,
   },
 
+  inputData: {
+    name: '',
+    id: '',
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      name: app.globalData.userInfo.name,
-      id: app.globalData.userInfo.id,
-      school: app.globalData.userInfo.school,
-    });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
   },
 
@@ -35,74 +29,37 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    this.setData({
+      name: app.globalData.userInfo.name,
+      id: app.globalData.userInfo.id,
+      school: app.globalData.userInfo.school,
+    });
   },
 
   //获取输入
   nameInput: function (e) {
-    this.setData({
-      name: e.detail.value
-    })
-
+    this.inputData.name = e.detail.value;
   },
   idInput: function (e) {
-    this.setData({
-      id: e.detail.value
-    })
-
+    this.inputData.id = e.detail.value;
   },
 
   //选择器改变
   pickerChange: function (e) {
     this.setData({
       index: e.detail.value,
-      school: this.data.schoolList[e.detail.value]
+      school: this.data.schoolList[e.detail.value],
     })
   },
 
   //按钮按下
   buttonTap: function () {
-    if (this.data.name != ''
-      && this.data.id != ''
+    if (this.inputData.name != ''
+      && this.inputData.id != ''
       && this.data.school != '---') {
       app.globalData.teacherFlag = 0;
-      app.globalData.userInfo.name = this.data.name;
-      app.globalData.userInfo.id = this.data.id;
+      app.globalData.userInfo.name = this.inputData.name;
+      app.globalData.userInfo.id = this.inputData.id;
       app.globalData.userInfo.school = this.data.schoolList[this.data.index];
       wx.setStorage({
         key: 'userData',
@@ -126,7 +83,7 @@ Page({
         success() {
           console.log('老师身份删除成功');
         }
-      })
+      });
       wx.navigateBack();
     }
   },
