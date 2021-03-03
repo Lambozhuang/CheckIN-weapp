@@ -1,5 +1,8 @@
 //timeUtil.js
-
+//
+// Created by LamboTZ
+// Copyright © 2021 LamboTZ. All rights reserved.
+//
 var formatNumber = function (n) {
   return ('' + n)[1] ? n : '0' + n;
 };

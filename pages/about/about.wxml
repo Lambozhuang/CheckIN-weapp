@@ -4,6 +4,6 @@
   <view class="text-container">
     <text class="text">{{version}}</text>
     <text class="text">ZJUT · Developed by LamboTZ</text>
-    <text class="text-3">Copyright © 2021 All Rights Reserved</text>
+    <text class="text-3">Copyright © 2021 LamboTZ. All rights reserved.</text>
   </view>
 </view>

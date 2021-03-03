@@ -1,4 +1,8 @@
 //commonUtil.js
+//
+// Created by LamboTZ
+// Copyright © 2021 LamboTZ. All rights reserved.
+//
 import base64 from 'base64.js'
 
 const app = getApp();

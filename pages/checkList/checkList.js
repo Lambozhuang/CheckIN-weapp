@@ -1,4 +1,8 @@
 // pages/checkList/checkList.js
+//
+// Created by LamboTZ
+// Copyright © 2021 LamboTZ. All rights reserved.
+//
 import commonUtil from '../../utils/commonUtil'
 const app = getApp();
 
@@ -8,23 +12,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    checkedList: [
-
-    ],
-
+    checkedList: [],
     checkedNumber: 0,
-
-    scanContinue: false,
-    scanFail: false,
-
-    tempUserInfo: {
-
-    },
-
-    compareFlag: true,
-
     theme: "light",
-
   },
 
   /**
@@ -39,13 +29,6 @@ Page({
         });
       }
     });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
   },
 
   /**
@@ -64,46 +47,8 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   scanCode: function () {
     const _this = this;
-    _this.setData({
-      scanFail: false,
-    });
     wx.scanCode({
       success(res) {
         const _tempUserInfo = commonUtil.decompressInfo(res.result);
@@ -143,12 +88,6 @@ Page({
         }
 
       },
-
-      fail() {
-        _this.setData({
-          scanContinue: false,
-        });
-      }
     });
 
 
@@ -223,10 +162,6 @@ Page({
         }
       }
     });
-
-
-
-
   },
 
   //清空当前列表
@@ -281,7 +216,4 @@ Page({
       });
     }
   }
-
-
-
 })

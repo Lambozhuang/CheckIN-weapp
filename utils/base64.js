@@ -1,4 +1,8 @@
 /**
+ * https://developer.aliyun.com/article/705585
+ */
+
+/**
 * UTF16和UTF8转换对照表
 * U+00000000 – U+0000007F 	0xxxxxxx
 * U+00000080 – U+000007FF 	110xxxxx 10xxxxxx
@@ -7,7 +11,6 @@
 * U+00200000 – U+03FFFFFF 	111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
 * U+04000000 – U+7FFFFFFF 	1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
 */
-//外部js引用时这样写：import {Base64} from '/xxx/base64';//路径需要根据实际路径去写
 var base64 = {
   // 转码表
   tables: [

@@ -1,6 +1,5 @@
 <!-- pages/checkList/checkList.wxml -->
 
-
 <view class="checkedNumber">
   已签到人数：{{checkedNumber}}
 </view>

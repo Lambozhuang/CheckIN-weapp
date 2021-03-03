@@ -1,4 +1,8 @@
 // pages/login/login.js
+//
+// Created by LamboTZ
+// Copyright © 2021 LamboTZ. All rights reserved.
+//
 const app = getApp();
 Page({
 
@@ -16,13 +20,6 @@ Page({
   inputData: {
     name: '',
     id: '',
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
   },
 
   /**
@@ -123,6 +120,4 @@ Page({
       }
     });
   }
-
-
 })

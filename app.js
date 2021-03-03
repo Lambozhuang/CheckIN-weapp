@@ -1,3 +1,7 @@
+//
+// Created by LamboTZ
+// Copyright © 2021 LamboTZ. All rights reserved.
+//
 App({
   globalData: {
     loginFlag: 0,
@@ -7,11 +11,8 @@ App({
       school: '---',
     },
     teacherFlag: 0,
-    checkedList: [
-
-    ],
+    checkedList: [],
     checkedNumber: 0,
-    completeReadingCaches: 0,
   },
   onLaunch: function () {
     const _this = this;

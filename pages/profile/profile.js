@@ -1,4 +1,8 @@
 // pages/profile/profile.js
+//
+// Created by LamboTZ
+// Copyright © 2021 LamboTZ. All rights reserved.
+//
 const app = getApp();
 
 Page({
@@ -11,24 +15,9 @@ Page({
       name: '',
       id: '',
       school: '',
-    }
-  },
-  loginFlag: 0,
-  teacherFlag: 0,
-
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    },
+    loginFlag: 0,
+    teacherFlag: 0,
   },
 
   /**
@@ -45,41 +34,6 @@ Page({
       loginFlag: app.globalData.loginFlag,
       teacherFlag: app.globalData.teacherFlag,
     });
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
 
   //按钮按下
@@ -124,6 +78,5 @@ Page({
         url: '../login/login'
       });
     }
-
   }
 })

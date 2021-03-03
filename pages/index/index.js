@@ -1,4 +1,8 @@
 // pages/index/index.js
+//
+// Created by LamboTZ
+// Copyright © 2021 LamboTZ. All rights reserved.
+//
 const app = getApp();
 import drawQrcode from '../../utils/weapp.qrcode.js'
 import timeUtil from '../../utils/timeUtil.js'
@@ -17,18 +21,14 @@ Page({
    */
   data: {
     currentTime: '',
-
     qrcode_w: qrcode_w,
-
     userInfo: {
       name: '',
       id: '',
       school: '',
-      time: '',
     },
     loginFlag: app.globalData.loginFlag,
     teacherFlag: app.globalData.teacherFlag,
-
     theme: "light",
     qrcodeFgColor: "#00a2ff",
     qrcodeFgColor_grey: "#ededed",
@@ -115,13 +115,6 @@ Page({
         });
       }
     });
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
   },
 
@@ -227,18 +220,4 @@ Page({
       }
     });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    clearInterval(interval2);
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  }
 })
