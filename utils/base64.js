@@ -87,7 +87,7 @@ var base64 = {
         let byte1 = (code & 0x1F) << 6;
         let byte2 = code2 & 0x3F;
         let utf16 = byte1 | byte2;
-        results.push(Sting.fromCharCode(utf16));
+        results.push(String.fromCharCode(utf16));
       } else if (((code >> 4) & 0xFF) == 0xE) {
         // 三字节
         // 1110xxxx 10xxxxxx 10xxxxxx

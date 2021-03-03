@@ -19,11 +19,6 @@
   </navigator>
 </view>
 
-<view class="output-container">
-  <navigator class="output-button" bindtap="outputList">
-    <text>导出列表</text>
-  </navigator>
-</view>
 
 <view class="checkList">
   <block wx:for="{{checkedList}}">

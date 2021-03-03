@@ -43,7 +43,7 @@ page {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: center;
   background: #fefefe;
@@ -58,24 +58,6 @@ page {
   padding: 10rpx;
 }
 
-.output-container {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  background: #fefefe;
-  color: #3ee646;
-}
-
-.output-container .output-button {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 10rpx;
-}
 
 .checkList {
   height: 100%;
@@ -166,7 +148,7 @@ page {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     background: #191919;
@@ -181,24 +163,6 @@ page {
     padding: 10rpx;
   }
 
-  .output-container {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    background: #191919;
-    color: #3ee646;
-  }
-
-  .output-container .output-button {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 10rpx;
-  }
 
   .checkList {
     height: 100%;

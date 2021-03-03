@@ -107,37 +107,39 @@ Page({
     wx.scanCode({
       success(res) {
         const _tempUserInfo = commonUtil.decompressInfo(res.result);
-        const _compareFlag = commonUtil.compareInfo(_this.data.checkedList, _this.data.checkedNumber, _tempUserInfo);
-        if (_tempUserInfo != 'FAIL' && _tempUserInfo.name != 'NULL' && _compareFlag) {
-          const _checkedList = [..._this.data.checkedList, _tempUserInfo];
-          const _checkedNumber = _this.data.checkedNumber + 1;
-          _this.setData({
-            checkedList: _checkedList,
-            checkedNumber: _checkedNumber,
-          });
-          app.globalData.checkedList = _checkedList;
-          wx.setStorage({
-            key: 'checkedList',
-            data: _checkedList,
-            success() {
-              console.log('签到列表缓存成功');
-            }
-          });
-          app.globalData.checkedNumber = _checkedNumber;
-          wx.setStorage({
-            key: 'checkedNumber',
-            data: _checkedNumber,
-          });
-          _this.afterScanCode(_tempUserInfo, _compareFlag);
-        } else if (_compareFlag === false) {
-          _this.afterScanCode(_tempUserInfo, _compareFlag);
-        } else {
+        console.log("_tempUserInfo: " + _tempUserInfo);
+        if (_tempUserInfo != 'FAIL') { //签到码有效
+          const _compareFlag = commonUtil.compareInfo(_this.data.checkedList, _this.data.checkedNumber, _tempUserInfo);
+          if (_compareFlag === true) { //签到不重复
+            const _checkedList = [..._this.data.checkedList, _tempUserInfo];
+            const _checkedNumber = _this.data.checkedNumber + 1;
+            _this.setData({
+              checkedList: _checkedList,
+              checkedNumber: _checkedNumber,
+            });
+            app.globalData.checkedList = _checkedList;
+            wx.setStorage({
+              key: 'checkedList',
+              data: _checkedList,
+              success() {
+                console.log('签到列表缓存成功');
+              }
+            });
+            app.globalData.checkedNumber = _checkedNumber;
+            wx.setStorage({
+              key: 'checkedNumber',
+              data: _checkedNumber,
+            });
+            _this.afterScanCode(_tempUserInfo, _compareFlag);
+          } else { //签到重复
+            _this.afterScanCode(_tempUserInfo, _compareFlag);
+          }
+        } else { //签到码无效
           wx.showToast({
             title: '无效的签到码',
             icon: 'error',
             duration: 2000
           });
-
         }
 
       },
@@ -237,7 +239,7 @@ Page({
     } else {
       const _this = this;
       wx.showModal({
-        title: '警告',
+        title: '警告: 清空列表',
         content: '此操作不可撤回',
         confirmText: '确认删除',
         confirmColor: '#ff3838',
