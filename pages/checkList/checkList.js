@@ -202,18 +202,4 @@ Page({
 
   },
 
-  //导出列表
-  outputList: function () {
-    if (this.data.checkedNumber === 0) {
-      wx.showToast({
-        title: '列表为空',
-        icon: 'error',
-      });
-    } else {
-      wx.showToast({
-        title: '功能暂未上线',
-        icon: 'error',
-      });
-    }
-  }
 })
